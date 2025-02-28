@@ -1,2 +1,12 @@
-<p>Herro Everynyan</p>
-  <router-outlet />
+<div class="file-upload-container">
+  <label for="fileInput" class="custom-file-upload">
+    <mat-icon>attach_file</mat-icon> Attach files
+  </label>
+  <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple>
+  <p>or drag and drop files here</p>
+  <small>Supported file types: zip, doc, xlsx, docx, pdf, avi, html, png</small><br>
+  <small>Maximum file size: 20.00 MB</small><br>
+  <small>Maximum file count: 4</small>
+</div>
+
+  <!-- <router-outlet /> -->

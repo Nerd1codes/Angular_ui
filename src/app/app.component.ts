@@ -1,12 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Angular_ui';
+  selectedFiles: File[] = [];
+
+  onFileSelected(event: any) {
+    const files = event.target.files;
+    if (files.length > 4) {
+      alert('You can upload up to 4 files only.');
+      return;
+    }
+    this.selectedFiles = Array.from(files);
+    console.log(this.selectedFiles);
+  }
 }
