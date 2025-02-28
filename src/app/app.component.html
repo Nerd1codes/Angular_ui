@@ -1,7 +1,10 @@
 <div class="file-upload-container">
+  <input type="file" id="fileInput" hidden accept=".zip,.doc,.xlsx,.docx,.pdf,.avi,.html,.png">
+
   <label for="fileInput" class="custom-file-upload">
     <mat-icon>attach_file</mat-icon> Attach files
   </label>
+
   <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple>
   <p>or drag and drop files here</p>
   <small>Supported file types: zip, doc, xlsx, docx, pdf, avi, html, png</small><br>
@@ -9,4 +12,4 @@
   <small>Maximum file count: 4</small>
 </div>
 
-  <!-- <router-outlet /> -->
+<!-- <router-outlet /> -->
