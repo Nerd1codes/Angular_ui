@@ -14,12 +14,31 @@ export class AppComponent {
   selectedFiles: File[] = [];
 
   onFileSelected(event: any) {
+    console.log("dal gayi file")
     const files = event.target.files;
     if (files.length > 4) {
       alert('You can upload up to 4 files only.');
       return;
     }
-    this.selectedFiles = Array.from(files);
-    console.log(this.selectedFiles);
+
+    const formData = new FormData();
+    const fileArray: File[] = Array.from(files); // Explicitly cast to File[]
+    fileArray.forEach((file: File) => {
+      formData.append('files', file);
+    });
+
+    fetch('http://localhost:3000/upload', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+        alert('Files uploaded successfully');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Error uploading files');
+      });
   }
 }
