@@ -14,7 +14,6 @@ export class AppComponent {
   selectedFiles: File[] = [];
 
   onFileSelected(event: any) {
-    console.log("dal gayi file")
     const files = event.target.files;
     if (files.length > 4) {
       alert('You can upload up to 4 files only.');
